@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import OpeningScreen from './components/OpeningScreen';
+import WishesScreen from './components/WishesScreen';
 
 function App() {
+  const [showWishes, setShowWishes] = useState(false);
+
+  const handleContinue = () => {
+    setShowWishes(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showWishes ? <WishesScreen /> : <OpeningScreen onContinue={handleContinue} />}
     </div>
   );
 }
